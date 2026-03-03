@@ -1,0 +1,50 @@
+.navbar {
+    width: 100%;
+    height: 60px;
+    background: #111827;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links span {
+    cursor: pointer;
+}
+
+.profile {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background: #1f2937;
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 120px;
+}
+
+.dropdown div {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.dropdown div:hover {
+    background: #374151; }
