@@ -1,7 +1,11 @@
 .navbar {
     width: 100%;
-    height: 60px;
-    background: #111827;
+    height: 65px;
+    /* Thodi height badhayi hai better spacing ke liye */
+    background: rgba(17, 24, 39, 0.8);
+    /* Translucent background */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism effect */
     color: white;
     display: flex;
     justify-content: space-between;
@@ -11,10 +15,19 @@
     top: 0;
     left: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo {
     cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.logo:hover {
+    color: #b194ff;
 }
 
 .nav-links {
@@ -25,26 +38,66 @@
 
 .nav-links span {
     cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.3s;
+    opacity: 0.7;
+}
+
+/* NEW: Active Link Highlight */
+.nav-links span:hover,
+.active-link {
+    opacity: 1 !important;
+    color: #b194ff;
+    text-shadow: 0 0 8px rgba(177, 148, 255, 0.4);
 }
 
 .profile {
     position: relative;
 }
 
+/* Profile Trigger Styling */
+.profile-trigger {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .dropdown {
     position: absolute;
-    top: 35px;
+    top: 45px;
+    /* Adjusted spacing */
     right: 0;
     background: #1f2937;
-    border-radius: 8px;
-    padding: 10px 0;
-    width: 120px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 8px 0;
+    width: 140px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    animation: dropdownSlide 0.2s ease-out;
+}
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .dropdown div {
-    padding: 8px 15px;
+    padding: 10px 20px;
     cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
 }
 
 .dropdown div:hover {
-    background: #374151; }
+    background: rgba(177, 148, 255, 0.15);
+    color: #b194ff;
+}

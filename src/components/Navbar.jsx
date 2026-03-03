@@ -1,28 +1,46 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom"; 
 import "./navbar.css";
 
 function Navbar() {
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation(); 
+    const isActive = (path) => location.pathname === path ? "active-link" : "";
 
     return (
-        <nav className="navbar">
+        <nav className="navbar glass">
             <h2 className="logo" onClick={() => navigate("/")}>
-                Genie
+                Genie 🧞
             </h2>
 
             <div className="nav-links">
-                <span onClick={() => navigate("/")}>Home</span>
-                <span onClick={() => navigate("/about")}>About</span>
+                <span
+                    className={isActive("/dashboard")}
+                    onClick={() => navigate("/dashboard")}
+                >
+                    Home
+                </span>
 
-                <div className="profile">
-                    <span onClick={() => setOpen(!open)}>Profile ⌄</span>
+                <span
+                    className={isActive("/about")}
+                    onClick={() => navigate("/about")}
+                >
+                    About
+                </span>
+
+                <div className="profile-container" onMouseLeave={() => setOpen(false)}>
+                    <span
+                        className={`profile-trigger ${open ? "open" : ""}`}
+                        onClick={() => setOpen(!open)}
+                    >
+                        Account ⌄
+                    </span>
 
                     {open && (
-                        <div className="dropdown">
-                            <div onClick={() => navigate("/login")}>Login</div>
-                            <div onClick={() => navigate("/signup")}>Sign Up</div>
+                        <div className="dropdown glass">
+                            <div onClick={() => { navigate("/login"); setOpen(false); }}>Login</div>
+                            <div onClick={() => { navigate("/signup"); setOpen(false); }}>Sign Up</div>
                         </div>
                     )}
                 </div>

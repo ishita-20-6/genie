@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"; // 1. Ye line add karni hai
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore"; 
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -12,10 +13,8 @@ const firebaseConfig = {
     measurementId: "G-KCLX1GGZBQ"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
 
 export const auth = getAuth(app);
+export const db = getFirestore(app); 
 export default app;
