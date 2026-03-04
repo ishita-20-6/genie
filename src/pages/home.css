@@ -8,6 +8,7 @@
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
+/* Base Wrapper */
 .dashboard-wrapper {
     padding: 100px 20px 40px;
     min-height: 100vh;
@@ -15,10 +16,10 @@
     color: var(--text-main);
 }
 
-/* Desktop Setup */
+/* Laptop/Desktop Layout */
 .dash-content {
     display: grid;
-    grid-template-columns: 380px 1fr;
+    grid-template-columns: 380px 1fr; /* Desktop par side-by-side */
     gap: 30px;
     max-width: 1400px;
     margin: 0 auto;
@@ -31,57 +32,53 @@
     border-radius: 20px;
 }
 
-/* Header Fix */
 .dash-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
     border-radius: 24px;
-    margin: 0 auto 30px auto;
-    max-width: 1400px;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.05));
 }
 
+/* Task Cards Grid */
 .pro-task-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
 }
 
-/* 🔥 MOBILE FIXES (Sirf 768px se niche chalega) */
-@media screen and (max-width: 768px) {
+/* 📱 MOBILE FIX (Sabse important) */
+@media (max-width: 768px) {
     .dashboard-wrapper {
-        padding: 80px 15px 20px;
+        padding: 80px 10px 20px !important;
     }
 
+    /* Side-by-side ko khatam karke upar-niche karo */
     .dash-content {
-        grid-template-columns: 1fr; /* Side-by-side khatam */
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+        gap: 20px;
     }
 
-    .dash-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-
-    /* Cards ki width fix */
-    .control-panel, .list-panel, .dash-header {
+    /* Card widths fix taaki screen se bahar na jayein */
+    .dash-header, .control-panel, .list-panel, .card, .pro-task-card {
         width: 100% !important;
         max-width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box; /* Padding ko width ke andar rakhega */
     }
 
-    /* Buttons full width for easy tapping */
-    .pro-add-btn, .primary-btn, .secondary-btn {
-        width: 100% !important;
-        margin: 5px 0;
-    }
-
-    /* Filters scrollable fix */
-    .pro-filters {
-        display: flex;
-        overflow-x: auto;
-        padding: 10px;
+    /* Buttons ko bada aur clickable banayein */
+    .pro-add-btn {
         width: 100%;
-        justify-content: flex-start;
+        padding: 15px;
+    }
+
+    /* Task list ke andar padding sahi karein */
+    .list-panel {
+        padding: 15px !important;
     }
 }
