@@ -1,118 +1,50 @@
-.landing-wrapper {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-    background: #0f172a;
-    text-align: center;
-}
-
-/* Moving Orbs for Magic Effect */
-.orb {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    filter: blur(100px);
-    border-radius: 50%;
-    z-index: 0;
-    opacity: 0.4;
-}
-
-.blue {
-    background: #3b82f6;
-    top: -100px;
-    left: -100px;
-}
-
-.purple {
-    background: #8b5cf6;
-    bottom: -100px;
-    right: -100px;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 10;
-    max-width: 700px;
-    padding: 20px;
-}
-
-.genie-icon {
-    font-size: 5rem;
-    margin-bottom: 20px;
-}
-
-.main-title {
-    font-size: clamp(3rem, 8vw, 5rem);
-    line-height: 1;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.main-title span {
-    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.description {
-    color: #94a3b8;
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-}
-
-.btn-group {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.primary-btn {
-    background: #8b5cf6;
-    color: white;
-    padding: 15px 35px;
-    border-radius: 50px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
-    transition: 0.3s;
-}
-
-.primary-btn:hover {
-    transform: translateY(-5px);
-    background: #7c3aed;
-}
-
-.secondary-btn {
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-    padding: 15px 35px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.secondary-btn:hover {
-    background: rgba(255, 255, 255, 0.1); }
-
-/* Mobile Devices ke liye special settings */
+/* Mobile Specific Fixes */
 @media screen and (max-width: 768px) {
-  .hero-container {
-    flex-direction: column; /* Side-by-side ki jagah upar-niche */
-    text-align: center;
-    padding: 20px;
+  .landing-wrapper {
+    height: auto; /* Fixed height hatayi taaki scroll ho sake */
+    min-height: 100vh;
+    padding: 60px 20px;
+    overflow-y: auto; /* Phone par scroll allow karein */
   }
 
-  .hero-text h1 {
-    font-size: 1.8rem; /* Bada text chhota ho jayega */
+  /* Orbs ko chhota karein taaki screen clutter na ho */
+  .orb {
+    width: 200px;
+    height: 200px;
+    opacity: 0.3;
   }
 
-  .navbar {
-    padding: 10px 20px;
+  .hero-content {
+    padding: 0;
+    width: 100%;
+  }
+
+  .genie-icon {
+    font-size: 3.5rem; /* Icon thoda chhota */
+    margin-bottom: 15px;
+  }
+
+  .main-title {
+    font-size: 2.8rem; /* Title size phone ke liye adjust kiya */
+    margin-bottom: 15px;
+  }
+
+  .description {
+    font-size: 1rem; /* Text readability badhayi */
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+
+  /* Buttons ko ek ke niche ek (stack) karein */
+  .btn-group {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .primary-btn, .secondary-btn {
+    width: 100%; /* Full width buttons for easy tapping */
+    padding: 18px; /* Bade buttons for better touch */
+    font-size: 1.1rem;
   }
 }
