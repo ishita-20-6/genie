@@ -8,7 +8,7 @@
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-/* Base Wrapper */
+/* 1. Global Reset */
 .dashboard-wrapper {
     padding: 100px 20px 40px;
     min-height: 100vh;
@@ -16,69 +16,80 @@
     color: var(--text-main);
 }
 
-/* Laptop/Desktop Layout */
-.dash-content {
-    display: grid;
-    grid-template-columns: 380px 1fr; /* Desktop par side-by-side */
-    gap: 30px;
-    max-width: 1400px;
-    margin: 0 auto;
+/* 2. Desktop Layout (Sirf badi screens ke liye) */
+@media screen and (min-width: 769px) {
+    .dash-content {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    .dash-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px;
+        max-width: 1400px;
+        margin: 0 auto 30px;
+    }
 }
 
+/* 3. Common Glass Card Styles */
 .glass {
     background: var(--card-bg);
     backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
+    padding: 25px;
 }
 
-.dash-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 30px;
-    border-radius: 24px;
-    margin-bottom: 30px;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.05));
+/* 4. Button Fix (No more white boxes!) */
+.pro-add-btn, .primary-btn {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)) !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-/* Task Cards Grid */
-.pro-task-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-}
-
-/* 📱 MOBILE FIX (Sabse important) */
-@media (max-width: 768px) {
+/* 5. 📱 MOBILE FIXES (Sirf phone ke liye) */
+@media screen and (max-width: 768px) {
     .dashboard-wrapper {
-        padding: 80px 10px 20px !important;
+        padding: 80px 10px 20px;
     }
 
-    /* Side-by-side ko khatam karke upar-niche karo */
     .dash-content {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
         gap: 20px;
     }
 
-    /* Card widths fix taaki screen se bahar na jayein */
-    .dash-header, .control-panel, .list-panel, .card, .pro-task-card {
+    .dash-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    /* Saare cards ko poori width do */
+    .control-panel, .list-panel, .glass, .pro-task-card {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
-        box-sizing: border-box; /* Padding ko width ke andar rakhega */
     }
 
-    /* Buttons ko bada aur clickable banayein */
-    .pro-add-btn {
-        width: 100%;
-        padding: 15px;
+    .pro-task-grid {
+        grid-template-columns: 1fr !important;
     }
 
-    /* Task list ke andar padding sahi karein */
-    .list-panel {
-        padding: 15px !important;
+    /* Horizontal filter buttons scrollable */
+    .pro-filters {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 5px;
     }
 }
