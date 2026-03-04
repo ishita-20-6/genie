@@ -267,3 +267,65 @@
         padding: 100px 20px 20px;
     }
 }
+
+/* Tablet aur Phone ke liye Special Adjustments */
+@media (max-width: 768px) {
+    /* 1. Wrapper ki padding kam karein taaki side gaps na rahein */
+    .dashboard-wrapper {
+        padding: 80px 15px 20px !important;
+        overflow-x: hidden;
+    }
+
+    /* 2. Grid ko single column mein force karein */
+    .dash-content {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        width: 100%;
+    }
+
+    /* 3. Header ko stack karein */
+    .dash-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* 4. Left Panel (Input Card) */
+    .control-panel {
+        position: static !important; /* Sticky hatana zaroori hai */
+        width: 100%;
+    }
+
+    /* 5. Right Panel (Task List) */
+    .list-panel {
+        padding: 20px 15px;
+        width: 100%;
+    }
+
+    /* 6. Task Grid ko responsive banayein */
+    .pro-task-grid {
+        grid-template-columns: 1fr !important; /* Ek line mein ek card */
+        gap: 15px;
+    }
+
+    /* 7. Filters ko scrollable banayein agar button zyada ho jayein */
+    .pro-filters {
+        display: flex;
+        overflow-x: auto;
+        width: 100%;
+        padding: 8px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pro-filters button {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    /* 8. Text sizes adjust karein */
+    .main-title {
+        font-size: 2rem !important;
+    }
+}
