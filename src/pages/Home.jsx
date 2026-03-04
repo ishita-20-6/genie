@@ -53,7 +53,7 @@ function Home() {
                     if (diffInMinutes === 60 && !notifiedTasks.current.has(`${t.id}-1h`)) {
                         new Notification("Genie Reminder! 🧞", {
                             body: `Upcoming: "${t.text}" is due in 1 hour. Time to wrap it up!`,
-                            icon: "/favicon.ico" // Aapka app icon yahan dikhega
+                            icon: "/favicon.ico" 
                         });
                         notifiedTasks.current.add(`${t.id}-1h`);
                     }
@@ -62,7 +62,7 @@ function Home() {
                     if (diffInMinutes <= 0 && !notifiedTasks.current.has(`${t.id}-overdue`)) {
                         new Notification("Task Overdue! ⚠️", {
                             body: `Attention: The deadline for "${t.text}" has passed.`,
-                            requireInteraction: true // Jab tak user click na kare alert dikhta rahega
+                            requireInteraction: true 
                         });
                         notifiedTasks.current.add(`${t.id}-overdue`);
                     }
