@@ -99,3 +99,20 @@
 
 .secondary-btn:hover {
     background: rgba(255, 255, 255, 0.1); }
+
+/* Mobile Devices ke liye special settings */
+@media screen and (max-width: 768px) {
+  .hero-container {
+    flex-direction: column; /* Side-by-side ki jagah upar-niche */
+    text-align: center;
+    padding: 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem; /* Bada text chhota ho jayega */
+  }
+
+  .navbar {
+    padding: 10px 20px;
+  }
+}
