@@ -5,327 +5,83 @@
     --accent-blue: #3b82f6;
     --text-main: #f8fafc;
     --text-dim: #94a3b8;
-    --danger: #ff4d4d;
-    --warning: #fbbf24;
-    --success: #10b981;
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-/* 1. Dashboard Layout Structure */
 .dashboard-wrapper {
-    padding: 100px 40px 40px;
-    /* Navbar space */
+    padding: 100px 20px 40px;
     min-height: 100vh;
     background: radial-gradient(circle at top right, #1e1b4b, #0b0e14);
     color: var(--text-main);
-    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* Desktop Setup */
 .dash-content {
     display: grid;
     grid-template-columns: 380px 1fr;
-    /* Two column setup */
     gap: 30px;
     max-width: 1400px;
     margin: 0 auto;
-    align-items: start;
 }
 
-/* 2. Glassmorphism Reusable Class */
 .glass {
     background: var(--card-bg);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
 }
 
-/* 3. Header Section */
+/* Header Fix */
 .dash-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
     border-radius: 24px;
-    margin-bottom: 30px;
+    margin: 0 auto 30px auto;
     max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.05));
 }
 
-.user-brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.avatar-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-purple);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
-}
-
-/* 4. Control Panel (Left Side) */
-.control-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    position: sticky;
-    top: 100px;
-}
-
-.card {
-    padding: 25px;
-    border-radius: 20px;
-}
-
-.pro-input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.pro-input-group input,
-.pro-input-group select {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid var(--glass-border);
-    color: white;
-    padding: 12px;
-    border-radius: 12px;
-}
-
-.pro-add-btn {
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.pro-add-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
-}
-
-/* 5. List Panel (Right Side) */
-.list-panel {
-    padding: 30px;
-    border-radius: 28px;
-    min-height: 70vh;
-}
-
-.list-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.pro-filters {
-    display: flex;
-    gap: 10px;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 5px;
-    border-radius: 15px;
-}
-
-.pro-filters button {
-    background: transparent;
-    border: none;
-    color: var(--text-dim);
-    padding: 8px 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.pro-filters button.active {
-    background: var(--accent-purple);
-    color: white;
-}
-
-/* 6. Professional Task Cards */
 .pro-task-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.pro-task-card {
-    position: relative;
-    padding: 20px;
-    border-radius: 20px;
-    border-left: 6px solid #64748b;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.pro-task-card:hover {
-    transform: translateY(-5px);
-    background: rgba(30, 41, 59, 0.9);
-}
-
-/* Priority Colors using your variables */
-.high {
-    border-left-color: var(--danger);
-}
-
-.medium {
-    border-left-color: var(--warning);
-}
-
-.low {
-    border-left-color: var(--success);
-}
-
-.card-body h4 {
-    margin: 0 0 10px 0;
-    font-size: 1.2rem;
-}
-
-.card-meta {
-    display: flex;
-    gap: 12px;
-    font-size: 0.8rem;
-    align-items: center;
-}
-
-.tag {
-    padding: 3px 10px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 0.7rem;
-}
-
-.status-overdue {
-    background: var(--danger);
-    color: white;
-}
-
-.status-done {
-    background: var(--success);
-    color: white;
-    opacity: 0.8;
-}
-
-.status-pending {
-    background: var(--accent-blue);
-    color: white;
-}
-
-.mini-delete {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(239, 68, 68, 0.1);
-    color: var(--danger);
-    border: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.mini-delete:hover {
-    background: var(--danger);
-    color: white;
-}
-
-/* 7. Progress Bar */
-.pro-progress-bar {
-    width: 100%;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 15px 0;
-}
-
-.pro-progress-bar .fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
-}
-
-/* Responsive Fix */
-@media (max-width: 1000px) {
-    .dash-content {
-        grid-template-columns: 1fr;
-    }
-
-    .control-panel {
-        position: static;
-    }
-
+/* 🔥 MOBILE FIXES (Sirf 768px se niche chalega) */
+@media screen and (max-width: 768px) {
     .dashboard-wrapper {
-        padding: 100px 20px 20px;
-    }
-}
-
-/* Tablet aur Phone ke liye Special Adjustments */
-@media (max-width: 768px) {
-    /* 1. Wrapper ki padding kam karein taaki side gaps na rahein */
-    .dashboard-wrapper {
-        padding: 80px 15px 20px !important;
-        overflow-x: hidden;
+        padding: 80px 15px 20px;
     }
 
-    /* 2. Grid ko single column mein force karein */
     .dash-content {
-        grid-template-columns: 1fr !important;
-        gap: 20px;
-        width: 100%;
+        grid-template-columns: 1fr; /* Side-by-side khatam */
     }
 
-    /* 3. Header ko stack karein */
     .dash-header {
         flex-direction: column;
-        gap: 15px;
         text-align: center;
-        padding: 20px;
-    }
-
-    /* 4. Left Panel (Input Card) */
-    .control-panel {
-        position: static !important; /* Sticky hatana zaroori hai */
-        width: 100%;
-    }
-
-    /* 5. Right Panel (Task List) */
-    .list-panel {
-        padding: 20px 15px;
-        width: 100%;
-    }
-
-    /* 6. Task Grid ko responsive banayein */
-    .pro-task-grid {
-        grid-template-columns: 1fr !important; /* Ek line mein ek card */
         gap: 15px;
     }
 
-    /* 7. Filters ko scrollable banayein agar button zyada ho jayein */
+    /* Cards ki width fix */
+    .control-panel, .list-panel, .dash-header {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Buttons full width for easy tapping */
+    .pro-add-btn, .primary-btn, .secondary-btn {
+        width: 100% !important;
+        margin: 5px 0;
+    }
+
+    /* Filters scrollable fix */
     .pro-filters {
         display: flex;
         overflow-x: auto;
+        padding: 10px;
         width: 100%;
-        padding: 8px;
         justify-content: flex-start;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .pro-filters button {
-        flex-shrink: 0;
-        white-space: nowrap;
-    }
-
-    /* 8. Text sizes adjust karein */
-    .main-title {
-        font-size: 2rem !important;
     }
 }
